@@ -122,7 +122,7 @@ export default function IndexPage() {
 </div>
 <button
     onClick={() => setProximityFilterActive(!proximityFilterActive)}
-    className=" p-2 rounded bg-green-500 text-white"
+    className=" p-2 rounded  bg-indigo-700 text-white"
   >
     {proximityFilterActive ? "Désactiver" : " à proximité"}
   </button>
@@ -130,38 +130,42 @@ export default function IndexPage() {
 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-8">
         {filteredRides.map(ride => (
-          <div key={ride._id} className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
-          <Link to={ride.availableSeats > 0 ? `/ride/${ride._id}` : '#'}>
-            <div className="aspect-w-16 aspect-h-9">
-              {/* {ride.photos?.[0] && (
-                <Image className="object-cover w-full h-full" src={ride.photos?.[0]} alt="" />
-              )} */}
-            </div>
-            <div className="p-4">
-              <h2 className="text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
+         <div key={ride._id} className="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
+         <Link to={ride.availableSeats > 0 ? `/ride/${ride._id}` : '#'}>
+           <div className="aspect-w-16 aspect-h-9">
+             {/* {ride.photos?.[0] && (
+               <Image className="object-cover w-full h-full" src={ride.photos?.[0]} alt="" />
+             )} */}
+           </div>
+           <div className="p-4 flex flex-col justify-between h-full">
+             <div>
+               <h2 className="text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
+               <p className="text-sm text-gray-500 mb-2"> ⏰{" "}
+                 {new Intl.DateTimeFormat("en-GB", {
+                   day: "numeric",
+                   month: "numeric",
+                   year: "numeric",
+                   hour: "numeric",
+                   minute: "numeric",
+                 }).format(new Date(ride.departureTime))}
+               </p>
+               <p className="text-sm text-gray-500 mb-2">
+                 {ride.availableSeats > 0 ? `${ride.availableSeats} available seats` : 'Pas de place'}
+               </p>
+               <p className="text-lg font-bold">{ride.price}DA</p>
+             </div>
 
-              <p className="text-sm text-gray-500 mb-2"> ⏰{" "}
-                {new Intl.DateTimeFormat("en-GB", {
-                  day: "numeric",
-                  month: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                }).format(new Date(ride.departureTime))}</p>
-              <p className="text-sm text-gray-500 mb-2">
-                {ride.availableSeats > 0 ? `${ride.availableSeats} available seats` : 'Pas de place'}
-              </p>
-              <p className="text-lg font-bold">{ride.price}DA</p>
-            </div>
-          </Link>
-          <div
-            className={`${
-              ride.availableSeats > 0 ? 'bg-green-500' : 'bg-red-500'
-            } text-white py-2 px-4 text-center`}
-          >
-            {ride.availableSeats > 0 ? 'Réserver' : 'Pas de place'}
-          </div>
-        </div>
+             <div
+               className={`${
+                 ride.availableSeats > 0 ? 'bg-indigo-700' : 'bg-red-500'
+               } text-white py-2 px-4 text-center`}
+             >
+               {ride.availableSeats > 0 ? 'Book this ride' : 'No Seats'}
+             </div>
+           </div>
+         </Link>
+       </div>
+       
         ))}
       </div>
     </div>

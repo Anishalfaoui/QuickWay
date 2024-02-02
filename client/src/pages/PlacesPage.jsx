@@ -43,11 +43,11 @@ export default function RidesPage() {
         <div className="text-xl font-bold">
           {ride.startingLocation} {' => '} {ride.destination} ({ride.availableSeats}place restant)
         </div>
-        <Link className="text-green-500 ml-24 cursor-pointer mt-2" to={`/account/ridesreservations/${ride._id}`} >
+        <Link className="text-indigo-700 ml-24 cursor-pointer mt-2" to={`/account/ridesreservations/${ride._id}`} >
         
         
       
-        Consulter
+        See Bookings
       </Link>
       </div>
       <div className="text-sm text-gray-500">
@@ -56,11 +56,11 @@ export default function RidesPage() {
       </div>
       
       {/* Modifier Button */}
-      <Link className="text-blue-500 cursor-pointer mt-2" to={`/account/rides/${ride._id}`} >
+      <Link className="text-indigo-700 cursor-pointer mt-2" to={`/account/rides/${ride._id}`} >
         
         
       
-        Modifier
+        Change
       </Link>
 
       {/* Delete Button */}

@@ -19,7 +19,7 @@ export default function RidesReservations() {
 
   return (
     <div className="container mx-auto mt-8 p-4 bg-gray-100 rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold mb-4 text-indigo-700">Reservations de cet course</h1>
+      <h1 className="text-3xl font-bold mb-4 text-indigo-700">bookings for this ride</h1>
       {bookings.length === 0 ? (
         <p className="text-gray-600">No bookings found for this ride.</p>
       ) : (
@@ -27,16 +27,16 @@ export default function RidesReservations() {
           {bookings.map(booking => (
             <li key={booking._id} className="bg-white p-6 rounded-lg shadow-md">
               <div className="mb-4">
-                <span className="text-lg font-semibold text-indigo-700">Persone:</span> {booking.user.nom} {booking.user.prenom}
+                <span className="text-lg font-semibold text-indigo-700">Name:</span> {booking.user.nom} {booking.user.prenom}
               </div>
               <div className="mb-4">
-                <span className="text-lg font-semibold text-indigo-700">Num tel:</span> {booking.user.phone}
+                <span className="text-lg font-semibold text-indigo-700">Phone number:</span> {booking.user.phone}
               </div>
               <div className="mb-4">
-                <span className="text-lg font-semibold text-indigo-700">Places réservées:</span> {booking.numberOfGuests}
+                <span className="text-lg font-semibold text-indigo-700">Booked places:</span> {booking.numberOfGuests}
               </div>
               <div>
-                <span className="text-lg font-semibold text-indigo-700">Prix:</span> {booking.price} DA
+                <span className="text-lg font-semibold text-indigo-700">Price:</span> {booking.price} DA
               </div>
             </li>
           ))}

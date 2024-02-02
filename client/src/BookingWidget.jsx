@@ -35,7 +35,7 @@ export default function BookingWidget({ ride }) {
   return (
     <div className="bg-white shadow p-4 rounded-2xl">
       <div className="text-2xl text-center">
-        Price: ${ride.price} / per ride
+        Price: {ride.price} DA / per ride
       </div>
       <div className="border rounded-2xl mt-4">
         <div className="py-3 px-4 border-t">
@@ -58,7 +58,7 @@ export default function BookingWidget({ ride }) {
       <button onClick={bookThisRide} className="primary mt-4">
         Book this ride
         {numberOfGuests > 0 && (
-          <span> ${numberOfGuests * ride.price}</span>
+          <span> {numberOfGuests * ride.price} DA</span>
         )}
       </button>
     </div>

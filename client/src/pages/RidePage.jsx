@@ -41,10 +41,10 @@ export default function RidePage() {
       });
 
       // Marker for the starting location
-      new mapboxgl.Marker().setLngLat([response.data.slongitude, response.data.slatitude]).addTo(map);
+      // new mapboxgl.Marker().setLngLat([response.data.slongitude, response.data.slatitude]).addTo(map);
       
       // Marker for the destination
-      new mapboxgl.Marker().setLngLat([response.data.dlongitude, response.data.dlatitude]).addTo(map);
+      // new mapboxgl.Marker().setLngLat([response.data.dlongitude, response.data.dlatitude]).addTo(map);
     });
   }, [id]);
 
@@ -101,18 +101,19 @@ export default function RidePage() {
             <p>
               <span className="font-semibold">Driver's Gender:</span> {ride.driver.gender}
             </p>
+            <p>
+              <span className="font-semibold">Car:</span> {ride.voiture}
+            </p>
           </div>
         </div>
 
-        <div className="mb-8 rounded-xl overflow-hidden">
-          <h2 className="text-xl font-semibold mb-2">{ride.voiture}</h2>
-          {ride.photos?.[0] && <Image className="object-cover w-full h-48" src={ride.photos?.[0]} alt="" />}
-        </div>
+        
 
-        <div>
+        
+      </div>
+      <div>
           <BookingWidget ride={ride} />
         </div>
-      </div>
 
       {/* Map Section with mapboxgl */}
       <div id="map" style={{ height: "300px", width: "100%" }}></div>
