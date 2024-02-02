@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import AddressLink from "../AddressLink";
 import PlaceGallery from "../PlaceGallery";
-
+//exportation (booking page )
 export default function BookingPage() {
   const {id} = useParams();
   const [booking,setBooking] = useState(null);
