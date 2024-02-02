@@ -75,3 +75,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+//fin
