@@ -40,7 +40,7 @@ function AdminLogin() {
         <h3>Login</h3>
 
         <InputContainer>
-          <p>Nom</p>
+          <p>Name</p>
           <input
             type="text"
             placeholder="Username"
