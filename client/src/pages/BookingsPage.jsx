@@ -47,4 +47,4 @@ export default function BookingsPage() {
     </div>
   );
 }
-//fin
+//finn
