@@ -1,10 +1,10 @@
-import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import BookingWidget from "../BookingWidget";
 import AddressLink from "../AddressLink";
 import Image from "../Image";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import mapboxgl from "mapbox-gl";
 
 function calculateAge(dateOfBirth) {
   const today = new Date();
@@ -28,8 +28,23 @@ export default function RidePage() {
       return;
     }
 
-    axios.get(`/rides/${id}`).then(response => {
+    axios.get(`/rides/${id}`).then((response) => {
       setRide(response.data);
+
+      // Initialize map
+      mapboxgl.accessToken = "pk.eyJ1IjoidGhlYXNzZXQiLCJhIjoiY2tyb3V1ZTZmMWpsMDJubDdha2lsbXYxeSJ9.A_zwqkPVPGP75uNMSHlzNQ";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/mapbox/streets-v11", // style URL
+        center: [response.data.slongitude, response.data.slatitude], // starting position [lng, lat]
+        zoom: 13, // starting zoom
+      });
+
+      // Marker for the starting location
+      new mapboxgl.Marker().setLngLat([response.data.slongitude, response.data.slatitude]).addTo(map);
+      
+      // Marker for the destination
+      new mapboxgl.Marker().setLngLat([response.data.dlongitude, response.data.dlatitude]).addTo(map);
     });
   }, [id]);
 
@@ -49,12 +64,7 @@ export default function RidePage() {
           stroke="currentColor"
           className="mx-4 text-gray-500 w-6 h-6"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 5l7 7-7 7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
         </svg>
         <AddressLink>{ride.destination}</AddressLink>
       </div>
@@ -65,16 +75,16 @@ export default function RidePage() {
             <h2 className="text-gray-700 text-xl font-semibold">{ride.description}</h2>
           </div>
           <div className="text-gray-700 mb-4">
-          <p>
-    <span className="font-semibold">Departure Time:</span>{" "}
-    {new Intl.DateTimeFormat("en-GB", {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    }).format(new Date(ride.departureTime))}
-  </p>
+            <p>
+              <span className="font-semibold">Departure Time:</span>{" "}
+              {new Intl.DateTimeFormat("en-GB", {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              }).format(new Date(ride.departureTime))}
+            </p>
             <p>
               <span className="font-semibold">Available Seats:</span> {ride.availableSeats}
             </p>
@@ -84,7 +94,7 @@ export default function RidePage() {
             <p>
               <span className="font-semibold">Driver's Phone:</span> {ride.driver.phone}
             </p>
-            
+
             <p>
               <span className="font-semibold">Driver's Age:</span> {driverAge}
             </p>
@@ -96,15 +106,16 @@ export default function RidePage() {
 
         <div className="mb-8 rounded-xl overflow-hidden">
           <h2 className="text-xl font-semibold mb-2">{ride.voiture}</h2>
-          {ride.photos?.[0] && (
-            <Image className="object-cover w-full h-48" src={ride.photos?.[0]} alt="" />
-          )}
+          {ride.photos?.[0] && <Image className="object-cover w-full h-48" src={ride.photos?.[0]} alt="" />}
         </div>
 
         <div>
           <BookingWidget ride={ride} />
         </div>
       </div>
+
+      {/* Map Section with mapboxgl */}
+      <div id="map" style={{ height: "300px", width: "100%" }}></div>
     </div>
   );
 }
