@@ -54,7 +54,7 @@ export default function RidePage() {
 
   return (
     <div className="container mx-auto mt-8 p-8 bg-white rounded-md shadow-lg">
-      <h1 className="text-4xl font-bold mb-4">{ride.title}</h1>
+      <h1 className="text-4xl font-bold mb-4 text-indigo-700 text-center ">The ride :</h1>
       <div className="flex items-center mb-4">
         <AddressLink>{ride.startingLocation}</AddressLink>
         <svg

@@ -31,18 +31,21 @@ export default function RegisterPage() {
 
   return (
     <div className="mt-4 grow flex items-center justify-around">
-      <div className="mb-64">
-        <h1 className="text-4xl text-center mb-4">Register</h1>
+      <div className="mb-64 border rounded-lg p-6">
+        <h1 className="text-4xl text-center text-indigo-700 mb-4">Register</h1>
         <form className="max-w-md mx-auto" onSubmit={registerUser}>
           <input type="text"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="nom"
                  value={nom}
                  onChange={ev => setNom(ev.target.value)} />
           <input type="text"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="prenom"
                  value={prenom}
                  onChange={ev => setPrenom(ev.target.value)} />
           <select
+            className="border rounded w-full p-2 mb-2"
             value={gender}
             onChange={ev => setGender(ev.target.value)}
           >
@@ -51,18 +54,22 @@ export default function RegisterPage() {
             <option value="femme">Femme</option>
           </select>
           <input type="text"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="Phone Number"
                  value={phone}
                  onChange={ev => setPhone(ev.target.value)} />
           <input type="date"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="Date of Birth"
                  value={datenaissance}
                  onChange={ev => setDatenaissance(ev.target.value)} />
           <input type="email"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="your@email.com"
                  value={email}
                  onChange={ev => setEmail(ev.target.value)} />
           <input type="password"
+                 className="border rounded w-full p-2 mb-2"
                  placeholder="password"
                  value={password}
                  onChange={ev => setPassword(ev.target.value)} />
@@ -74,5 +81,7 @@ export default function RegisterPage() {
       </div>
     </div>
   );
+  
+  
 }
 //fin
