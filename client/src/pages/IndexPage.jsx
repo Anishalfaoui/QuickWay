@@ -72,7 +72,7 @@ export default function IndexPage() {
         userCoordinates.longitude,
         ride.slatitude,
         ride.slongitude
-      ) < minDistance; // Adjust the distance threshold as needed
+      ) < minDistance; 
   
     return departureTimeFilter && (proximityFilter || !proximityFilterActive) &&
       ride.startingLocation.toLowerCase().includes(startingLocationTerm.toLowerCase()) &&
