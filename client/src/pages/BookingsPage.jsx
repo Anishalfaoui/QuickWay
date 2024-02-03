@@ -1,9 +1,9 @@
-import AccountNav from "../AccountNav";
+import AccountNav from "./client/src/AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import BookingDates from "../BookingDates";
+import BookingDates from "./client/src/BookingDates";
 
 export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
@@ -34,7 +34,7 @@ export default function BookingsPage() {
             </div>
           
             {/* <div className="my-2 text-gray-600">
-              ⏰{" "}
+              ⏰{" "} nonn 
               {format(new Date(booking.ride.departureTime), "dd/MM/yyyy HH:mm")}
             </div> */}
             <div className="my-2 text-lg font-semibold">
@@ -47,4 +47,3 @@ export default function BookingsPage() {
     </div>
   );
 }
-//finn
