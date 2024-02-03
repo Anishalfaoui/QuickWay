@@ -135,15 +135,11 @@ export default function IndexPage() {
         {filteredRides.map(ride => (
          <div key={ride._id} className="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
          <Link to={ride.availableSeats > 0 ? `/ride/${ride._id}` : '#'}>
-           <div className="aspect-w-16 aspect-h-20">
-             {/* {ride.photos?.[0] && (
-               <Image className="object-cover w-full h-full" src={ride.photos?.[0]} alt="" />
-             )} */}
-           </div>
-           <div className="p-50 flex flex-col justify-between h-full">
+           
+           <div className=" p-50 flex flex-col justify-between h-full">
              <div>
-               <h2 className="text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
-               <p className="text-sm text-gray-500 mb-2"> ⏰{" "}
+               <h2 className="ml-4 text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
+               <p className="ml-4 text-sm text-gray-500 mb-2"> ⏰{" "}
                  {new Intl.DateTimeFormat("en-GB", {
                    day: "numeric",
                    month: "numeric",
@@ -152,10 +148,10 @@ export default function IndexPage() {
                    minute: "numeric",
                  }).format(new Date(ride.departureTime))}
                </p>
-               <p className="text-sm text-gray-500 mb-2">
+               <p className="ml-4 text-sm text-gray-500 mb-2">
                  {ride.availableSeats > 0 ? `${ride.availableSeats} available seats` : 'Pas de place'}
                </p>
-               <p className="text-lg font-bold">{ride.price}DA</p>
+               <p className="ml-4 text-lg font-bold">{ride.price}DA</p>
              </div>
 
              <div
