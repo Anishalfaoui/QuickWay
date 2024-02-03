@@ -82,3 +82,4 @@ export default function BookingPage() {
     </div>
   );
 }
+//finn
