@@ -13,7 +13,7 @@ export default function IndexPage() {
   const [minDistance, setMinDistance] = useState(50);
 
   useEffect(() => {
-    // Get user's geolocation
+    // Get user's geolocation eventlistner de react
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -49,7 +49,7 @@ export default function IndexPage() {
     const distance = R * c;
     return distance;
   };
-
+// recherche things 
   const filteredRides = rides.filter(ride => {
     const searchTermDays = departureTimeTerm ? new Date(departureTimeTerm).getUTCDate() : undefined;
     const searchTermHours = departureTimeTerm ? parseInt(departureTimeTerm.split("T")[1].split(":")[0], 10) : undefined;
@@ -72,7 +72,7 @@ export default function IndexPage() {
         userCoordinates.longitude,
         ride.slatitude,
         ride.slongitude
-      ) < minDistance; 
+      ) < minDistance; // Adjust the distance threshold as needed
   
     return departureTimeFilter && (proximityFilter || !proximityFilterActive) &&
       ride.startingLocation.toLowerCase().includes(startingLocationTerm.toLowerCase()) &&
@@ -135,12 +135,12 @@ export default function IndexPage() {
         {filteredRides.map(ride => (
          <div key={ride._id} className="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
          <Link to={ride.availableSeats > 0 ? `/ride/${ride._id}` : '#'}>
-           <div className="aspect-w-16 aspect-h-9">
+           <div className="aspect-w-16 aspect-h-20">
              {/* {ride.photos?.[0] && (
                <Image className="object-cover w-full h-full" src={ride.photos?.[0]} alt="" />
              )} */}
            </div>
-           <div className="p-3 flex flex-col justify-between h-full">
+           <div className="p-50 flex flex-col justify-between h-full">
              <div>
                <h2 className="text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
                <p className="text-sm text-gray-500 mb-2"> ⏰{" "}
@@ -174,4 +174,3 @@ export default function IndexPage() {
     </div>
   );
 }
-//finn

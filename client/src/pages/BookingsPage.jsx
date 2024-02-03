@@ -1,9 +1,9 @@
-import AccountNav from "./client/src/AccountNav";
+import AccountNav from "../AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import BookingDates from "./client/src/BookingDates";
+import BookingDates from "../BookingDates";
 
 export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
@@ -17,7 +17,7 @@ export default function BookingsPage() {
   return (
     <div>
       <AccountNav />
-      <div className="mt-8">
+      <div className="mt-12">
         {bookings?.length > 0 && bookings.map(booking => (
           <Link
             key={booking._id}
@@ -26,18 +26,18 @@ export default function BookingsPage() {
           >
             <div className="flex items-center justify-between">
               <div className="text-lg font-bold">
-                {booking.ride.startingLocation} {'=>'} {booking.ride.destination}
+                {booking.ride.startingLocation} {' => '} {booking.ride.destination}
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-red-500">
                 {format(new Date(booking.ride.departureTime), "dd/MM/yyyy HH:mm")}
               </div>
             </div>
           
             {/* <div className="my-2 text-gray-600">
-              ⏰{" "} nonn 
+              ⏰{" "}
               {format(new Date(booking.ride.departureTime), "dd/MM/yyyy HH:mm")}
             </div> */}
-            <div className="my-2 text-lg font-semibold">
+            <div className="my-3 text-lg font-semibold">
               {booking.numberOfGuests} Places
             </div>
             <div className="text-3xl font-bold">{booking.price} DA</div>
