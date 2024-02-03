@@ -34,7 +34,7 @@ export default function BookingsPage() {
             </div>
           
             {/* <div className="my-2 text-gray-600">
-              ⏰{" "}
+              ⏰{" "} non 
               {format(new Date(booking.ride.departureTime), "dd/MM/yyyy HH:mm")}
             </div> */}
             <div className="my-2 text-lg font-semibold">
