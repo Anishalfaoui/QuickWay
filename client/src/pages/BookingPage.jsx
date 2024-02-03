@@ -31,7 +31,7 @@ export default function BookingPage() {
   
   return (
     <div className="my-1 mx-auto max-w-2xl border-4 border-indigo-700 p-8 text-center">
-      <h1 className="text-2xl font-bold text-indigo-700 mb-2">La réservation :</h1>
+      <h1 className="text-2xl font-bold text-indigo-700 mb-2">The booking :</h1>
       <div className="text-lg mb-3">{booking.chauffeur.nom} {booking.chauffeur.prenom}</div>
       <div className="text-lg mb-3">{booking.chauffeur.phone}</div>
       <div className="text-lg mb-3">{booking.ride.voiture}</div>
