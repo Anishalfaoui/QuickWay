@@ -82,19 +82,19 @@ export default function IndexPage() {
 
   return (
     <div>
-     <div className="grid grid-cols-2 gap-4">
+     <div className="grid grid-cols-2 gap-6">
   <div className="flex flex-col gap-2">
     
     <input
       type="text"
-      placeholder="Starting location..."
+      placeholder="Starting location ..."
       value={startingLocationTerm}
       onChange={(e) => setStartingLocationTerm(e.target.value)}
       className="p-2 rounded border"
     />
     <input
       type="text"
-      placeholder="Destination..."
+      placeholder="Destination ..."
       value={destinationTerm}
       onChange={(e) => setDestinationTerm(e.target.value)}
       className="p-2 rounded border"
@@ -105,7 +105,7 @@ export default function IndexPage() {
     
     <input
       type="number"
-      placeholder="Distance approximité (km)..."
+      placeholder="Distance approximité (km) ..."
       
       onChange={(e) => setMinDistance(e.target.value)}
       className="p-2 rounded border"
@@ -120,15 +120,18 @@ export default function IndexPage() {
   </div>
   
 </div>
+
+
+
 <button
     onClick={() => setProximityFilterActive(!proximityFilterActive)}
-    className=" p-2 rounded  bg-indigo-700 text-white"
+    className=" p-3 rounded  bg-indigo-700 text-white"
   >
     {proximityFilterActive ? "Désactiver" : " à proximité"}
   </button>
 
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-20 gap-9">
         {filteredRides.map(ride => (
          <div key={ride._id} className="relative bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:scale-105">
          <Link to={ride.availableSeats > 0 ? `/ride/${ride._id}` : '#'}>
@@ -137,7 +140,7 @@ export default function IndexPage() {
                <Image className="object-cover w-full h-full" src={ride.photos?.[0]} alt="" />
              )} */}
            </div>
-           <div className="p-4 flex flex-col justify-between h-full">
+           <div className="p-3 flex flex-col justify-between h-full">
              <div>
                <h2 className="text-xl font-bold mb-2">{ride.startingLocation} {'=>'} {ride.destination}</h2>
                <p className="text-sm text-gray-500 mb-2"> ⏰{" "}

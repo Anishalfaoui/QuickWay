@@ -26,9 +26,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mt-4 grow flex items-center justify-around">
-      <div className="mb-64">
-        <h1 className="text-4xl text-center mb-4 text-indigo-700">Login</h1>
+    <div className="mt-4 flex items-center justify-around">
+      <div className="mb-12"> {/* Adjusted margin-bottom */}
+        <h1 className="text-4xl text-center mb-14 text-indigo-700">Login</h1>
         <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
           <input
             type="email"
@@ -43,7 +43,7 @@ export default function LoginPage() {
             onChange={(ev) => setPassword(ev.target.value)}
           />
           <button className="primary text-indigo-700">Login</button>
-          <div className="text-center py-2 text-gray-500">
+          <div className="text-center py-2 text-gray-500 mt-4"> {/* Adjusted margin-top */}
             Don't have an account yet?{" "}
             <Link className="underline text-indigo-700" to={"/register"}>
               Register now
@@ -53,4 +53,4 @@ export default function LoginPage() {
       </div>
     </div>
   );
-}
+  }  

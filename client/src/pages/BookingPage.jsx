@@ -30,18 +30,19 @@ export default function BookingPage() {
  
   
   return (
-    <div className="my-8 mx-auto max-w-2xl border p-4">
-      <div className="text-lg mb-2">{booking.chauffeur.nom} {booking.chauffeur.prenom}</div>
-      <div className="text-lg mb-2">{booking.chauffeur.phone}</div>
-      <div className="text-lg mb-2">{booking.ride.voiture}</div>
+    <div className="my-1 mx-auto max-w-2xl border-4 border-indigo-700 p-8 text-center">
+      <h1 className="text-2xl font-bold text-indigo-700 mb-2">La réservation :</h1>
+      <div className="text-lg mb-3">{booking.chauffeur.nom} {booking.chauffeur.prenom}</div>
+      <div className="text-lg mb-3">{booking.chauffeur.phone}</div>
+      <div className="text-lg mb-3">{booking.ride.voiture}</div>
      
-      <AddressLink className="my-2 block text-gray-600">
+      <AddressLink className="my-3 block text-gray-600">
         📍 {booking.ride.startingLocation}
       </AddressLink>
-      <AddressLink className="my-2 block text-gray-600">
+      <AddressLink className="my-3 block text-gray-600">
         🚗 {booking.ride.destination}
       </AddressLink>
-      <div className="my-2 block text-gray-600">
+      <div className="my-3 block text-gray-600">
         ⏰{" "}
         {new Intl.DateTimeFormat("en-GB", {
           day: "numeric",
@@ -56,8 +57,8 @@ export default function BookingPage() {
         
         
           
-            <div className="text-lg mb-2">{booking.numberOfGuests} Places</div>
-            <div className="text-3xl font-bold">{booking.price} DA</div>
+            <div className="text-lg mb-3">{booking.numberOfGuests} Places</div>
+            <div className="text-3xl font-bold text-center">{booking.price} DA</div>
           
           <svg
             xmlns="http://www.w3.org/2000/svg"
