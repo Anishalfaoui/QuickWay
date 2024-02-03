@@ -269,7 +269,7 @@ export default function RidesFormPage() {
           'voiture for your ride. Should be short and catchy as in advertisement'
         )}
        
-        <input
+        <input  style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}
           type="text"
           value={voiture}
           onChange={ev => setvoiture(ev.target.value)}
@@ -277,18 +277,24 @@ export default function RidesFormPage() {
         />
          <div>
           <label htmlFor="startingLocationWilaya">Starting Location Wilaya:</label>
-          <br />
-          <select
-            id="startingLocationWilaya"
-            value={startingLocationWilaya}
-            onChange={handleStartingLocationWilayaChange}
-          >
-            <option value="">Select a wilaya</option>
-            {wilayaOptions}
-          </select>
-          <br />
+        
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+  <select
+    id="startingLocationWilaya"
+    value={startingLocationWilaya}
+    onChange={handleStartingLocationWilayaChange}
+  >
+    <option value="">Select a wilaya</option>
+    {wilayaOptions}
+  </select>
+</div>
+
+          
+          
           <label htmlFor="startingLocationDaira">Starting Location Daira:</label>
-          <br />
+         
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+          
           <select
             id="startingLocationDaira"
             value={startingLocationDaira}
@@ -298,9 +304,11 @@ export default function RidesFormPage() {
             <option value="">Select a daira</option>
             {dairaOptions}
           </select>
-          <br />
+          </div> 
+          
           <label htmlFor="startingLocationCommune">Starting Location Commune:</label>
-          <br />
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+          
           <select
             id="startingLocationCommune"
             value={startingLocationCommune}
@@ -311,10 +319,12 @@ export default function RidesFormPage() {
             {communeOptions}
           </select>
         </div>
-
+        </div>
         <div>
+          
           <label htmlFor="destinationWilaya">Destination Wilaya:</label>
-          <br />
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+          
           <select
             id="destinationWilaya"
             value={destinationWilaya}
@@ -323,9 +333,11 @@ export default function RidesFormPage() {
             <option value="">Select a wilaya</option>
             {wilayaOptions}
           </select>
-          <br />
+          </div>
+        
           <label htmlFor="destinationDaira">Destination Daira:</label>
-          <br />
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+          
           <select
             id="destinationDaira"
             value={destinationDaira}
@@ -335,9 +347,11 @@ export default function RidesFormPage() {
             <option value="">Select a daira</option>
             {dairaOptionsd}
           </select>
-          <br />
+          </div>
+          
           <label htmlFor="destinationCommune">Destination Commune:</label>
-          <br />
+          <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+          
           <select
             id="destinationCommune"
             value={destinationCommune}
@@ -347,24 +361,28 @@ export default function RidesFormPage() {
             <option value="">Select a commune</option>
             {communeOptionsd}
           </select>
-        </div>
+          </div>
         
+        </div>
+        <br />
+        <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+
         {preInput('Departure Time', 'Time at which your ride departs')}
         <input
   type="datetime-local"
   value={departureTime}
   onChange={ev => setDepartureTime(ev.target.value)}
   placeholder="Select date and time"
-/>
+/></div>
 
         {preInput('Available Seats', 'Number of available seats in your ride')}
-        <input
+        <input style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}
           type="number"
           value={availableSeats}
           onChange={ev => setAvailableSeats(ev.target.value)}
         />
         {preInput('Price', 'Price per ride')}
-        <input
+        <input style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}
           type="number"
           value={price}
           onChange={ev => setPrice(ev.target.value)}
