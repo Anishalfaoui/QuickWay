@@ -160,7 +160,8 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const {email,password} = req.body;
-  const userDoc = await User.findOne({email});
+
+  const userDoc = await User.findOne({email}).exec({ maxTimeMS: 60000 });
   if (userDoc) {
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
@@ -185,7 +186,7 @@ app.get('/profile', (req,res) => {
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       if (err) throw err;
-      const {name,email,_id} = await User.findById(userData.id);
+      const {name,email,_id} = await User.findById(userData.id).exec({ maxTimeMS: 60000 });
       res.json({name,email,_id});
     });
   } else {
@@ -330,7 +331,8 @@ app.get('/user-rides', (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
     const { id } = userData;
-    res.json(await Ride.find({ driver: id }));
+    res.json(await Ride.find({ driver: id }).exec({ maxTimeMS: 60000 }));
+
   });
 });
 
@@ -338,7 +340,7 @@ app.get('/user-rides', (req, res) => {
 app.get('/rides/:id', async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const { id } = req.params;
-  res.json(await Ride.findById(id).populate('driver'));
+  res.json(await Ride.findById(id).populate('driver').exec({ maxTimeMS: 60000 }));
 });
 
 // Updated route for updating ride details
@@ -347,7 +349,7 @@ app.get('/rides/:id', async (req, res) => {
 // Updated route for getting all rides
 app.get('/rides', async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
-  res.json(await Ride.find());
+  res.json(await Ride.find().exec({ maxTimeMS: 60000 }));
 });
 
 // Updated route for creating a booking for a ride
@@ -392,7 +394,7 @@ const booking = await Booking.create({
 app.get('/bookings', async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
   const userData = await getUserDataFromReq(req);
-  res.json(await Booking.find({ user: userData.id }).populate('ride').populate('chauffeur'))
+  res.json(await Booking.find({ user: userData.id }).populate('ride').populate('chauffeur').exec({ maxTimeMS: 60000 }))
 });
 
 app.delete('/delete-ride/:id', async (req, res) => {
