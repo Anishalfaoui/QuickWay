@@ -35,7 +35,7 @@ export default function BookingWidget({ ride }) {
   return (
     <div className="bg-white shadow p-4 rounded-2xl">
       <div className="text-2xl text-center">
-        Price: {ride.price} DA / per ride
+        Price: {ride.price} DA / per seat
       </div>
       <div className="border rounded-2xl mt-4">
         <div className="py-3 px-4 border-t">
